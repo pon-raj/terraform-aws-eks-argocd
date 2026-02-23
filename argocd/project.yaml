@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: raj-apps
+  namespace: argocd
+spec:
+  description: Project for raj applications
+  sourceRepos:
+    - 'https://github.com/pon-raj/terraform-aws-eks-argocd.git'
+  destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
